@@ -7,3 +7,4 @@ export * from "./entities/initiative-link.entity";
 export * from "./entities/initiative-summary.entity";
 export * from "./entities/vote.entity";
 export * from "./entities/official-vote-result.entity";
+export * from "./entities/follow.entity";
