@@ -11,11 +11,22 @@ import type { InitiativeStep } from "./initiative-step.entity";
 import type { InitiativeLink } from "./initiative-link.entity";
 import type { InitiativeSummary } from "./initiative-summary.entity";
 
+/**
+ * Tipos de iniciativa parlamentaria soportados.
+ * Se mapean directamente desde el campo TIPO del open data del Congreso.
+ */
 export enum InitiativeType {
   Proyecto = "Proyecto",
   Proposicion = "Proposicion",
 }
 
+/**
+ * Entidad principal que representa una iniciativa parlamentaria del Congreso de los Diputados.
+ * Los datos proceden del open data de congreso.es y se actualizan diariamente mediante el ETL.
+ * `expediente` es el identificador único externo y se usa como clave de upsert en la sincronización.
+ * Las relaciones con steps, links y summary son lazy (eager: false) para evitar cargas
+ * innecesarias en las consultas del feed paginado.
+ */
 @Entity("initiatives")
 export class Initiative {
   @PrimaryGeneratedColumn("uuid")

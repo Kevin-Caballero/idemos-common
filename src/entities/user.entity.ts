@@ -5,6 +5,11 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 
+/**
+ * Entidad que representa un usuario registrado en la plataforma.
+ * La contraseña se almacena exclusivamente como hash bcrypt (campo passwordHash);
+ * en ningún punto del sistema se persiste ni se transmite la contraseña en texto plano.
+ */
 @Entity("users")
 export class User {
   @PrimaryGeneratedColumn("uuid")

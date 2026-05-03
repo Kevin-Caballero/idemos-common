@@ -8,6 +8,12 @@ import {
 } from "typeorm";
 import { Initiative } from "./initiative.entity";
 
+/**
+ * Resumen en lenguaje natural de una iniciativa parlamentaria generado por el servicio AI.
+ * Relación OneToOne con Initiative (una iniciativa, un resumen).
+ * El campo `model` registra qué LLM produjo el resumen para trazabilidad
+ * y para poder regenerarlo con un modelo mejor en futuras versiones.
+ */
 @Entity("initiative_summaries")
 export class InitiativeSummary {
   @PrimaryGeneratedColumn("uuid")
